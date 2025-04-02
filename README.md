@@ -1,4 +1,4 @@
-# VanillaJS-DataLab.github.io
+# VanillaJS DataLab 
 
 See the demo of the project: [Demo](https://rosa-lpz.github.io/VanillaJS-DataLab.github.io/) 
 
