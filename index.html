@@ -19,7 +19,7 @@
 
     <div class="main-content">
 
-        <!--Dataset upload section-->
+        <!--DATASETS section-->
         <section id="file-upload-section">
             <h2>Datasets</h2>
             <h3>Upload New Dataset</h3>
@@ -42,13 +42,23 @@
             </table>
         </section>
 
-        <!--Data preview section-->
+        <!--DATA PREVIEW section-->
         <section id="data-preview-section" class="hidden">
             <h2>Data Preview</h2>
-            <h3>Data Statistics</h3>
+            <!--Select Dataset-->
+            <div class="dataset-selection">
+                <label for="dataset-select">Select Dataset:</label>
+                <select id="dataset-select" onchange="loadDataset()">
+                    <option value="">Select a dataset</option>
+                </select>
+            </div>
+            <!--Dataset Statistics-->
+            <h3>Dataset Statistics</h3>
             <div id="statistics"></div>
             <br>
-            <h3>Data Table</h3>
+
+            <!--Dataset Table-->
+            <h3>Dataset Table</h3>
             <div id="data-table-container"></div>
             <div class="pagination">
                 <button onclick="prevPage()">Previous</button>
@@ -57,7 +67,7 @@
             </div>
         </section>
 
-        <!--Visualize Data Section-->
+        <!--DATA VISUALIZATION Section-->
         <section id="visualize-data-section" class="hidden">
             <h2>Visualize Data</h2>
             <div class="chart-options">

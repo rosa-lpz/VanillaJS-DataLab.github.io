@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente más moderna */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     display: flex;
     margin: 0;
     padding: 0;
@@ -36,10 +36,10 @@ body {
 }
 
 .sidebar li {
-    padding: 12px 15px; /* Más espacio vertical */
+    padding: 12px 15px; /* More vertical space */
     cursor: pointer;
-    border-bottom: 1px solid #495057; /* Línea divisoria sutil */
-    transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+    border-bottom: 1px solid #495057; /* Subtle dividing line */
+    transition: background-color 0.3s ease; /* Smooth transition on mouse hover */
 }
 
 .sidebar li:last-child {
@@ -48,8 +48,8 @@ body {
 
 .sidebar li.active {
     font-weight: bold;
-    color: #00bcd4; /* Color акцентный */
-    background-color: rgba(0, 188, 212, 0.1); /* Fondo акцентный sutil */
+    color: #00bcd4;  
+    background-color: rgba(0, 188, 212, 0.1);  /* Light blue background for active item */
 }
 
 .sidebar li:hover {
@@ -75,6 +75,7 @@ body {
     display: none;
 }
 
+/* DATASETS */
 /* File Upload */
 #file-upload-section input[type="file"] {
     margin-bottom: 15px;
@@ -85,7 +86,7 @@ body {
 
 #file-upload-section button {
     padding: 10px 15px;
-    background-color: #007bff; /* Botón azul */
+    background-color: #007bff;  /* Blue button */
     color: white;
     border: none;
     border-radius: 4px;
@@ -104,21 +105,21 @@ body {
     margin-bottom: 10px;
 }
 
-/* Dataset Table in Upload Section */
+/* List of datasets table */
 #datasets-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sutil sombra */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow */
     border-radius: 4px;
-    overflow: hidden; /* Para que el borde redondeado funcione en la tabla */
+    overflow: hidden; /* For the rounded border to work on the datasets table */
 }
 
 #datasets-table th, #datasets-table td {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
-    background-color: white; /* Fondo blanco para las celdas */
+    background-color: white; /* White background for dataset table cells */
 }
 
 #datasets-table th {
@@ -132,10 +133,10 @@ body {
 }
 
 #datasets-table tbody tr:hover {
-    background-color: #e9ecef; /* Gris claro al pasar el ratón */
+    background-color: #e9ecef; /* Light gray on mouseover */
 }
 
-/* Data Preview */
+/* DATA PREVIEW */
 #data-preview-section table {
     width: 100%;
     border-collapse: collapse;
@@ -177,6 +178,7 @@ body {
     background-color: #f0f0f0;
 }
 
+/* Data Statistics */
 #statistics-table {
     width: 100%;
     border-collapse: collapse;
@@ -198,7 +200,7 @@ body {
     font-weight: bold;
 }
 
-/* Visualization */
+/* DATA VISUALIZATION */
 #visualization-section .chart-options {
     margin-bottom: 25px;
     padding: 15px;
@@ -257,7 +259,7 @@ svg {
     stroke-width: 3;
 }
 
-/* Notebook Interface */
+/* NOTEBOOKS   */
 #notebook-section input[type="file"] {
     margin-bottom: 15px;
     padding: 8px;
@@ -267,7 +269,7 @@ svg {
 
 #notebook-section button {
     padding: 10px 15px;
-    background-color: #6c757d; /* Botón gris */
+    background-color: #6c757d; /* Gray button */
     color: white;
     border: none;
     border-radius: 4px;
@@ -302,7 +304,7 @@ svg {
     display: block;
     width: 100%;
     padding: 10px 15px;
-    background-color: #007bff; /* Botón azul para ejecutar */
+    background-color: #007bff; /* Blue button to Execute */
     color: white;
     border: none;
     border-radius: 0 0 4px 4px;
