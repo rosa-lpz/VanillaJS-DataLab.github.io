@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Lab</title>
+    <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Data Lab</h2>
+        <ul>
+            <li data-section="file-upload" class="active">Datasets</li>
+            <li data-section="data-preview">Data Preview</li>
+            <li data-section="visualize-data">Data Visualization</li>
+            <li data-section="notebook">Notebook</li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+
+        <!--Dataset upload section-->
+        <section id="file-upload-section">
+            <h2>Datasets</h2>
+            <h3>Upload New Dataset</h3>
+            <form id="upload-form">
+                <input type="file" id="file-input" accept=".csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                <button type="button" onclick="handleFileUpload()">Upload</button>
+            </form>
+            <div id="upload-message"></div>
+
+            <h3>List of Uploaded Datasets</h3>
+            <table id="datasets-table">
+                <thead>
+                    <tr>
+                        <th>Filename</th>
+                        <th>Date of Upload</th>
+                    </tr>
+                </thead>
+                <tbody id="datasets-table-body">
+                    </tbody>
+            </table>
+        </section>
+
+        <!--Data preview section-->
+        <section id="data-preview-section" class="hidden">
+            <h2>Data Preview</h2>
+            <h3>Data Statistics</h3>
+            <div id="statistics"></div>
+            <br>
+            <h3>Data Table</h3>
+            <div id="data-table-container"></div>
+            <div class="pagination">
+                <button onclick="prevPage()">Previous</button>
+                <span id="page-number">1</span>
+                <button onclick="nextPage()">Next</button>
+            </div>
+        </section>
+
+        <!--Visualize Data Section-->
+        <section id="visualize-data-section" class="hidden">
+            <h2>Visualize Data</h2>
+            <div class="chart-options">
+                <label for="chart-type">Chart Type:</label>
+                <select id="chart-type" onchange="updateVisualizationOptions()">
+                    <option value="">Select Chart</option>
+                    <option value="bar">Bar Chart</option>
+                    <option value="scatter">Scatter Plot Chart</option>
+                    <option value="line">Line Chart</option>
+                </select>
+            </div>
+
+            <div id="visualization-options" class="hidden">
+                <label for="x-axis">X Axis:</label>
+                <select id="x-axis"></select>
+                <label for="y-axis">Y Axis:</label>
+                <select id="y-axis"></select>
+                <button onclick="renderChart()">Render Chart</button>
+            </div>
+
+            <div id="chart-container" class="chart-container"></div>
+        </section>
+
+        <!--Jupyter Notebook Section-->
+        <section id="notebook-section" class="hidden">
+            <h2>Jupyter Notebook</h2>
+            <input type="file" id="notebook-upload" accept=".ipynb">
+            <button onclick="uploadNotebook()">Upload Notebook</button>
+            <div id="notebook-viewer">
+                <textarea placeholder="View or paste notebook content here"></textarea>
+                <button onclick="executeNotebook()">Execute (Simulated)</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+
+    <script src="scripts.js"></script>
+
+
+
+</body>
+</html>
