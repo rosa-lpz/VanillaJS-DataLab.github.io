@@ -1,4 +1,4 @@
-const sidebarLinks = document.querySelectorAll('.sidebar li');
+const sidebarLinks = document.querySelectorAll('.sidebar li');           
 const sections = document.querySelectorAll('.main-content > section');
 const fileInput = document.getElementById('file-input');
 const uploadMessage = document.getElementById('upload-message');
@@ -12,7 +12,6 @@ const chartContainer = document.getElementById('chart-container');
 const pageNumberSpan = document.getElementById('page-number');
 const datasetsTableBody = document.getElementById('datasets-table-body');
         
-
 let uploadedDatasets = []; // Array to store uploaded datasets (filename, data)
 let currentDatasetIndex = -1; // Index of the currently viewed dataset
 let currentHeaders = [];
@@ -43,7 +42,7 @@ function showSection(sectionId) {
     });
 }
 
-// DATASETS - FILE UPLOAD ---------------------
+// DATASETS - FILE UPLOAD ------------------------------------
 // Mockup Data (for initial display - now used as a default uploaded dataset)
 const mockupFilename = 'mockup_data.csv';
 const mockupCSVData = `Name,Age,Score,Grade
@@ -76,6 +75,7 @@ showSection('file-upload'); // Show upload section by default
 
 
 // DATASETS
+// Handle file upload
 function handleFileUpload() {
     const file = fileInput.files[0];
     if (!file) {
@@ -95,7 +95,7 @@ function handleFileUpload() {
     reader.readAsText(file);
 }
 
-
+// Parse CSV data into an object with headers and data
 function parseCSV(csvText) {
     const lines = csvText.trim().split('\n');
     const currentHeaders = lines[0].split(',').map(header => header.trim());
@@ -111,7 +111,8 @@ function parseCSV(csvText) {
     return { headers: currentHeaders, data: data };
 }
 
-// DATA PREVIEW (Dataset Statistics and Table)
+
+
 // Populate the datasets table with uploaded datasets
 function populateDatasetsTable() {
     datasetsTableBody.innerHTML = '';
@@ -122,29 +123,19 @@ function populateDatasetsTable() {
         datasetsTableBody.appendChild(row);
     });
 }
-// Load the selected dataset and display its data and statistics
-function loadDataset(index) {
-    currentDatasetIndex = index;
-    const dataset = uploadedDatasets[index];
-    if (dataset) {
-        currentHeaders = dataset.data.headers;
-        displayData(dataset.data, 1);
-        displayStatistics(calculateStatistics(dataset.data));
-        populateAxisOptions();
-    }
-}
+
 // Calculate statistics for each column
-// This function calculates mean, median, and standard deviation for numeric columns
-// and returns an object with these statistics.
-// If a column is non-numeric, it returns 'Non-numeric' for that column.
-// It also handles empty datasets by returning an empty object.
-// The function uses the reduce method to calculate the sum and standard deviation,
-// and the sort method to find the median.
-// It also uses the map method to create an array of numeric values for each column.
-// The function is designed to be efficient and handles large datasets by using
-// array methods that are optimized for performance.
-// It also includes error handling for invalid data types and empty datasets.
-// The function is flexible and can be used with any dataset that has numeric columns.
+    // This function calculates mean, median, and standard deviation for numeric columns
+    // and returns an object with these statistics.
+    // If a column is non-numeric, it returns 'Non-numeric' for that column.
+    // It also handles empty datasets by returning an empty object.
+    // The function uses the reduce method to calculate the sum and standard deviation,
+    // and the sort method to find the median.
+    // It also uses the map method to create an array of numeric values for each column.
+    // The function is designed to be efficient and handles large datasets by using
+    // array methods that are optimized for performance.
+    // It also includes error handling for invalid data types and empty datasets.
+    // The function is flexible and can be used with any dataset that has numeric columns.
 
 function calculateStatistics(data) {
     if (!data || data.length === 0) {
@@ -186,13 +177,13 @@ function calculateStatistics(data) {
 
 // Display statistics in a table format
 function displayStatistics(stats) {
-    let html = '<table id="statistics-table"><thead><tr><th>Column</th><th>Mean</th><th>Median</th><th>Std Dev</th><th>Type</th></tr></thead><tbody>';
+    let html = '<table id="statistics-table"><thead><tr><th>Column</th><th>Type</th><th>Mean</th><th>Median</th><th>Std Dev</th></tr></thead><tbody>';
     for (const header in stats) {
         html += `<tr><td>${header}</td>`;
         if (stats[header].type === 'Non-numeric') {
             html += `<td colspan="3">${stats[header].type}</td></tr>`;
         } else {
-            html += `<td>${stats[header].mean}</td><td>${stats[header].median}</td><td>${stats[header].stdDev}</td><td>Numeric</td></tr>`;
+            html += `<td>Numeric</td><td>${stats[header].mean}</td><td>${stats[header].median}</td><td>${stats[header].stdDev}</td></tr>`;
         }
     }
     html += "</tbody></table>";
@@ -234,7 +225,7 @@ function displayData(data, page) {
     dataTableContainer.innerHTML = html;
     pageNumberSpan.textContent = page;
 }
-
+// Pagination controls
 function prevPage() {
     if (currentPage > 1) {
         currentPage--;
@@ -250,6 +241,18 @@ function nextPage() {
     }
 }
 
+// DATA PREVIEW (Dataset Statistics and Table) -------------------
+// Load the selected dataset and display its data and statistics
+function loadDataset(index) {
+    currentDatasetIndex = index;
+    const dataset = uploadedDatasets[index];
+    if (dataset) {
+        currentHeaders = dataset.data.headers;
+        displayData(dataset.data, 1);
+        displayStatistics(calculateStatistics(dataset.data));
+        populateAxisOptions();
+    }
+}
 
 
 
